@@ -168,7 +168,7 @@
     const total = slides.length;
 
     if (total > 1) {
-      const INTERVAL = 5000; // 5 secondes entre chaque slide
+      const INTERVAL = 2500;
       let current = 0;
       let timer = null;
 
