@@ -1173,7 +1173,7 @@ p:last-child { margin-bottom: 0; }
 }
 .footer-col a:hover { color: var(--c-yellow); }
 
-.footer-brand img { height: 50px; margin-bottom: var(--s-3); filter: brightness(0) invert(1); }
+.footer-brand img {   height: 60px;   width: auto;   margin-bottom: var(--s-3); }
 .footer-brand p {
   font-size: 0.92rem;
   line-height: 1.6;
