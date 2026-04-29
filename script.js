@@ -107,37 +107,149 @@
 
 
   /* =================================================================
-     4. VALIDATION FORMULAIRE DE CONTACT
+     4. FORMULAIRE DE DEVIS — Validation + envoi AJAX vers Formspree
+     -----------------------------------------------------------------
+     - Aucune adresse mail ni secret SMTP côté frontend : Formspree
+       transmet le message à funtastic33@yahoo.com depuis son backend.
+     - Honeypot anti-spam (_gotcha) : si rempli, on simule un succès
+       sans rien envoyer pour ne pas alerter le bot.
+     - Désactivation du bouton + libellé "Envoi en cours…" pendant
+       l'envoi pour éviter les doubles soumissions.
+     - Messages de succès / erreur affichés inline (sans alert).
+     - Si l'endpoint n'est pas encore configuré, on prévient
+       l'utilisateur via la zone de feedback (et la console).
      ================================================================= */
-  const contactForm = document.querySelector('form[name="contact"]');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      // Honeypot : si le champ caché est rempli, c'est probablement un bot
-      const honeypot = contactForm.querySelector('input[name="bot-field"]');
+  const quoteForms = document.querySelectorAll('form[data-formspree-endpoint]');
+  quoteForms.forEach((form) => initQuoteForm(form));
+
+  function initQuoteForm(form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const btnLabel = submitBtn ? submitBtn.querySelector('.btn__label') : null;
+    const defaultLabel = submitBtn ? (submitBtn.dataset.defaultLabel || (btnLabel ? btnLabel.textContent : submitBtn.textContent)) : '';
+    const feedback = form.querySelector('.form-feedback');
+    const endpoint = form.getAttribute('data-formspree-endpoint');
+    const endpointConfigured = endpoint && endpoint.indexOf('FORMSPREE_ENDPOINT_HERE') === -1 && /^https?:\/\//.test(endpoint);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // 1. Honeypot : si rempli → on simule le succès sans rien envoyer
+      const honeypot = form.querySelector('input[name="_gotcha"], input[name="bot-field"]');
       if (honeypot && honeypot.value) {
-        e.preventDefault();
+        showFeedback(feedback, 'success', 'Merci, votre demande a bien été envoyée !');
+        form.reset();
         return;
       }
 
-      // Validation HTML5 native gérée par le navigateur
-      // On vérifie juste qu'on a coché le RGPD
-      const rgpd = contactForm.querySelector('input[name="rgpd"]');
+      // 2. Validation HTML5 native (champs requis, type email, etc.)
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // 3. Vérification email plus stricte que celle du navigateur
+      const emailField = form.querySelector('input[type="email"]');
+      if (emailField && !isValidEmail(emailField.value)) {
+        showFeedback(feedback, 'error', 'Merci de saisir une adresse email valide.');
+        emailField.focus();
+        return;
+      }
+
+      // 4. Consentement RGPD obligatoire
+      const rgpd = form.querySelector('input[name="rgpd"]');
       if (rgpd && !rgpd.checked) {
-        e.preventDefault();
-        alert('Merci d\'accepter le traitement de vos données pour pouvoir envoyer le formulaire.');
+        showFeedback(feedback, 'error', 'Merci d\'accepter le traitement de vos données pour envoyer le formulaire.');
         rgpd.focus();
         return;
       }
 
-      // Animation du bouton pendant l'envoi
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Envoi en cours...';
+      // 5. Bouton désactivé + libellé "Envoi en cours…"
+      setSubmitting(submitBtn, btnLabel, true);
+      hideFeedback(feedback);
+
+      // 6. Si l'endpoint Formspree n'est pas configuré, on évite un envoi
+      //    cassé et on prévient le développeur en console.
+      if (!endpointConfigured) {
+        console.warn('[Funtastic] Endpoint Formspree non configuré. Remplacez "FORMSPREE_ENDPOINT_HERE" dans contact.html.');
+        showFeedback(feedback, 'error', 'Le formulaire n\'est pas encore activé. Merci de nous contacter par téléphone au 06 18 37 93 19.');
+        setSubmitting(submitBtn, btnLabel, false, defaultLabel);
+        return;
       }
 
-      // Le formulaire est envoyé naturellement à Netlify (action="/merci.html")
+      // 7. Envoi via fetch (HTTPS uniquement, pas de secret côté client)
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+
+        if (response.ok) {
+          showFeedback(
+            feedback,
+            'success',
+            'Merci ! Votre demande a bien été envoyée. Nous revenons vers vous sous 24 à 48 heures.'
+          );
+          form.reset();
+        } else {
+          // Formspree renvoie un JSON { errors: [...] } en cas de souci
+          let detail = '';
+          try {
+            const data = await response.json();
+            if (data && Array.isArray(data.errors) && data.errors.length) {
+              detail = ' (' + data.errors.map((er) => er.message).join(', ') + ')';
+            }
+          } catch (_) { /* corps non JSON, on ignore */ }
+          showFeedback(
+            feedback,
+            'error',
+            'Une erreur est survenue lors de l\'envoi' + detail + '. Merci de réessayer ou de nous appeler au 06 18 37 93 19.'
+          );
+        }
+      } catch (err) {
+        showFeedback(
+          feedback,
+          'error',
+          'Impossible d\'envoyer le message (problème de connexion). Merci de réessayer ou de nous appeler au 06 18 37 93 19.'
+        );
+      } finally {
+        setSubmitting(submitBtn, btnLabel, false, defaultLabel);
+      }
     });
+  }
+
+  function isValidEmail(value) {
+    // RFC 5322 simplifié : suffisant pour une validation client
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(value).trim());
+  }
+
+  function setSubmitting(btn, labelEl, isSubmitting, defaultLabel) {
+    if (!btn) return;
+    btn.disabled = isSubmitting;
+    btn.classList.toggle('is-loading', isSubmitting);
+    if (labelEl) {
+      labelEl.textContent = isSubmitting ? 'Envoi en cours…' : (defaultLabel || labelEl.textContent);
+    } else {
+      btn.textContent = isSubmitting ? 'Envoi en cours…' : (defaultLabel || btn.textContent);
+    }
+  }
+
+  function showFeedback(el, type, message) {
+    if (!el) return;
+    el.hidden = false;
+    el.className = 'form-feedback form-feedback--' + type;
+    el.textContent = message;
+    // Scroll doux pour rendre le message visible sur mobile
+    if (typeof el.scrollIntoView === 'function') {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  function hideFeedback(el) {
+    if (!el) return;
+    el.hidden = true;
+    el.textContent = '';
+    el.className = 'form-feedback';
   }
 
 

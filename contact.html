@@ -351,31 +351,35 @@
           <p class="lead">Plus vous nous donnez de détails, plus nous pouvons vous proposer une animation adaptée. Tous les champs marqués <span style="color:var(--c-orange);">*</span> sont obligatoires.</p>
 
           <!-- ============================================================
-               FORMULAIRE NETLIFY
+               FORMULAIRE DE DEVIS — FORMSPREE
                ============================================================
-               Configuration Netlify Forms :
-               - name="contact"          → identifiant du formulaire dans Netlify
-               - method="POST"           → envoi standard
-               - data-netlify="true"     → active la détection auto Netlify
-               - data-netlify-honeypot   → champ piège anti-spam
-               - action="/merci.html"    → redirection après envoi
-               - input hidden form-name  → obligatoire pour Netlify
+               Pour activer l'envoi des emails, remplacer la valeur
+               de `data-formspree-endpoint` ci-dessous par votre URL
+               Formspree (ex: https://formspree.io/f/abcdwxyz).
+               Voir https://formspree.io pour créer un endpoint.
+
+               Sécurité :
+               - Aucun secret ni mot de passe SMTP n'est exposé.
+               - L'email destinataire (funtastic33@yahoo.com) reste
+                 stocké côté Formspree, pas dans le code source.
+               - Les en-têtes HTTPS, le honeypot et la double-soumission
+                 sont gérés côté serveur + côté client.
                ============================================================ -->
           <form
+            id="quote-form"
             name="contact"
             method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            action="/merci.html"
+            data-formspree-endpoint="FORMSPREE_ENDPOINT_HERE"
+            action="FORMSPREE_ENDPOINT_HERE"
             class="form"
             novalidate>
 
-            <!-- Champ caché obligatoire pour Netlify -->
-            <input type="hidden" name="form-name" value="contact">
+            <!-- Sujet de l'email reçu côté Formspree -->
+            <input type="hidden" name="_subject" value="Nouvelle demande de devis — Funtastic33">
 
-            <!-- Honeypot anti-spam (caché aux humains) -->
-            <p class="honeypot">
-              <label>Ne remplissez pas ce champ : <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+            <!-- Honeypot anti-spam (caché aux humains et aux lecteurs d'écran) -->
+            <p class="honeypot" aria-hidden="true">
+              <label>Ne remplissez pas ce champ : <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
             </p>
 
             <!-- Ligne 1 : Nom + Email -->
@@ -487,10 +491,13 @@
             </div>
 
             <!-- Bouton submit -->
-            <button type="submit" class="btn btn--primary btn--lg" style="width:100%; margin-top:var(--s-3);">
-              Envoyer ma demande de devis
+            <button type="submit" class="btn btn--primary btn--lg" data-default-label="Envoyer ma demande de devis" style="width:100%; margin-top:var(--s-3);">
+              <span class="btn__label">Envoyer ma demande de devis</span>
               <span class="btn-arrow" aria-hidden="true">→</span>
             </button>
+
+            <!-- Zone de feedback (succès / erreur) gérée par script.js -->
+            <div class="form-feedback" role="status" aria-live="polite" hidden></div>
 
             <p style="font-size:0.85rem; color:var(--c-text-muted); text-align:center; margin-top:var(--s-3);">
               🔒 Vos informations sont confidentielles et ne seront jamais partagées.
