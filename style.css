@@ -442,6 +442,10 @@ p:last-child { margin-bottom: 0; }
 }
 .site-header.is-scrolled { box-shadow: var(--shadow-md); }
 
+.site-header .container {
+  height: 100%;
+}
+
 .nav {
   height: 100%;
   display: flex;
