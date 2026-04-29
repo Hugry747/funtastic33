@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3D91"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#tg)"/>
+  <circle cx="220" cy="240" r="80" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="380" cy="240" r="80" fill="#FFFFFF" opacity="0.9"/>
+  <text x="220" y="260" font-size="80" text-anchor="middle">😊</text>
+  <text x="380" y="260" font-size="80" text-anchor="middle">😊</text>
+  <text x="300" y="430" font-family="'Bricolage Grotesque', sans-serif" font-weight="800" font-size="42" text-anchor="middle" fill="#FFFFFF">DOMI &amp; NICO</text>
+  <text x="300" y="470" font-family="'Outfit', sans-serif" font-weight="500" font-size="22" text-anchor="middle" fill="#FFFFFF" opacity="0.9">Vos animateurs depuis 2021</text>
+</svg>

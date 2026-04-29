@@ -1,0 +1,13 @@
+# =====================================================
+# robots.txt pour www.funtastic33.fr
+# =====================================================
+# Autorise tous les moteurs de recherche à indexer le site
+
+User-agent: *
+Allow: /
+
+# Pages techniques à ne pas indexer
+Disallow: /merci.html
+
+# Sitemap
+Sitemap: https://www.funtastic33.fr/sitemap.xml

@@ -1,0 +1,124 @@
+# =============================================================
+# CONFIGURATION NETLIFY pour funtastic33.fr
+# =============================================================
+# Ce fichier configure le comportement du site sur Netlify :
+# - Redirections (URLs propres, anciennes URLs Wix)
+# - Headers de sécurité
+# - Configuration de build
+# =============================================================
+
+[build]
+  publish = "."
+
+# =============================================================
+# REDIRECTIONS — Compatibilité avec les anciennes URLs Wix
+# =============================================================
+# Si Google a indexé les anciennes URLs du site Wix, on évite
+# les 404 en redirigeant vers les nouvelles pages.
+
+[[redirects]]
+  from = "/prestations-bassin-arcachon"
+  to = "/prestations.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/evjf-evg-bassin-arcachon"
+  to = "/evj.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/team-building-bassin-arcachon"
+  to = "/team-building.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/anniversaire-enfants-bassin-arcachon"
+  to = "/anniversaires-enfants.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/location-materiel-evenementiel-bassin-arcachon"
+  to = "/locations.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/structures-gonflables"
+  to = "/jeux-gonflables.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/réalité-virtuelle"
+  to = "/realite-virtuelle.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/trampoline-elastique-sur-remorque"
+  to = "/trampoline-elastique.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/petittrain"
+  to = "/petit-train.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/golf-petanque-bowling"
+  to = "/golf-petanque-bowling.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/a-propos"
+  to = "/a-propos.html"
+  status = 301
+  force = true
+
+# =============================================================
+# HEADERS — Sécurité et performance
+# =============================================================
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache long sur les assets (CSS, JS, images)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache court sur les pages HTML (pour pouvoir mettre à jour rapidement)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

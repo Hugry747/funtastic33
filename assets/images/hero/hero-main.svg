@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3D91"/>
+      <stop offset="50%" stop-color="#1A4FB5"/>
+      <stop offset="100%" stop-color="#FF6B35"/>
+    </linearGradient>
+    <pattern id="hp" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="30" cy="30" r="2" fill="#FFFFFF" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#hg)"/>
+  <rect width="1200" height="800" fill="url(#hp)"/>
+  <!-- Confettis -->
+  <circle cx="200" cy="150" r="40" fill="#FFC93C" opacity="0.9"/>
+  <circle cx="1000" cy="650" r="55" fill="#FFC93C" opacity="0.85"/>
+  <rect x="900" y="120" width="60" height="60" fill="#FF6B35" opacity="0.85" transform="rotate(15 930 150)"/>
+  <rect x="150" y="600" width="50" height="50" fill="#FFFFFF" opacity="0.3" transform="rotate(-20 175 625)"/>
+  <polygon points="600,80 620,130 670,130 630,160 645,210 600,180 555,210 570,160 530,130 580,130" fill="#FFC93C" opacity="0.4"/>
+  <!-- Émojis ambiance -->
+  <text x="300" y="450" font-size="120" opacity="0.9">🎉</text>
+  <text x="780" y="380" font-size="100" opacity="0.85">🎯</text>
+  <text x="500" y="600" font-size="90" opacity="0.85">🎈</text>
+</svg>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B3D91">
+
+  <!-- ============ SEO ============ -->
+  <title>Contact & Devis | Funtastic - Animations Bassin d'Arcachon</title>
+  <meta name="description" content="Demandez votre devis gratuit en 24-48h pour vos animations événementielles sur le Bassin d'Arcachon, Bordeaux, Gironde et Landes. Tél : 06 18 37 93 19.">
+  <meta name="keywords" content="contact funtastic, devis animation événementielle, devis team building Bordeaux, devis EVJ Bassin d'Arcachon">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.funtastic33.fr/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact & Devis - Funtastic">
+  <meta property="og:description" content="Demandez votre devis gratuit en 24-48h pour vos animations sur le Bassin d'Arcachon.">
+  <meta property="og:url" content="https://www.funtastic33.fr/contact.html">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============ Schema.org ContactPage ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact - Funtastic",
+    "url": "https://www.funtastic33.fr/contact.html",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Funtastic",
+      "telephone": "+33618379319",
+      "email": "funtastic33@yahoo.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gujan-Mestras",
+        "addressRegion": "Gironde",
+        "postalCode": "33470",
+        "addressCountry": "FR"
+      }
+    }
+  }
+  </script>
+
+  <!-- ============ Styles spécifiques contact ============ -->
+  <style>
+    /* Layout 2 colonnes : formulaire + infos */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: var(--s-7);
+      align-items: start;
+    }
+
+    /* Bloc formulaire (gauche) */
+    .contact-form-wrap {
+      background: var(--c-white);
+      border-radius: var(--r-xl);
+      padding: var(--s-7);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--c-border);
+    }
+    .contact-form-wrap h2 {
+      font-size: 1.8rem;
+      margin-bottom: var(--s-3);
+    }
+    .contact-form-wrap > p.lead {
+      color: var(--c-text-soft);
+      margin-bottom: var(--s-6);
+    }
+
+    /* Bloc info (droite) */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s-4);
+    }
+
+    .info-card {
+      background: var(--c-white);
+      border-radius: var(--r-lg);
+      padding: var(--s-5);
+      border: 1px solid var(--c-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .info-card--gradient {
+      background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-light) 100%);
+      color: var(--c-white);
+      border: none;
+    }
+    .info-card--gradient h3,
+    .info-card--gradient strong { color: var(--c-white); }
+
+    .info-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: var(--s-4);
+      display: flex;
+      align-items: center;
+      gap: var(--s-2);
+    }
+    .info-card h3 .icon {
+      width: 36px;
+      height: 36px;
+      background: var(--c-bg-soft);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .info-card--gradient h3 .icon {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s-3);
+      padding: var(--s-3) 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-row:first-child { padding-top: 0; }
+
+    .info-card--gradient .info-row {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .info-row__icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--c-orange);
+    }
+    .info-card--gradient .info-row__icon { color: var(--c-yellow); }
+
+    .info-row strong { display: block; font-family: var(--font-display); font-size: 1rem; }
+    .info-row a {
+      color: inherit;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .info-row a:hover { color: var(--c-orange); }
+    .info-card--gradient .info-row a:hover { color: var(--c-yellow); }
+    .info-row span.muted {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Boutons d'actions rapides */
+    .quick-actions {
+      display: grid;
+      gap: var(--s-3);
+      margin-top: var(--s-4);
+    }
+    .quick-actions .btn { width: 100%; }
+
+    /* Liste réassurance */
+    .reassur-list { list-style: none; padding: 0; }
+    .reassur-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s-3);
+      padding: var(--s-2) 0;
+      font-size: 0.95rem;
+      color: var(--c-text-soft);
+    }
+    .reassur-list li::before {
+      content: '✓';
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--c-yellow);
+      color: var(--c-text);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+
+    /* Hero allégé pour cette page */
+    .page-hero {
+      background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-light) 100%);
+      color: var(--c-white);
+      padding: var(--s-8) 0 var(--s-7);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+    .page-hero > .container { position: relative; z-index: 1; }
+    .page-hero h1 {
+      color: var(--c-white);
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      margin-bottom: var(--s-4);
+      letter-spacing: -0.025em;
+    }
+    .page-hero p {
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    /* Fil d'Ariane */
+    .breadcrumb {
+      padding: var(--s-4) 0;
+      font-size: 0.88rem;
+      color: var(--c-text-muted);
+    }
+    .breadcrumb a { color: var(--c-text-muted); }
+    .breadcrumb a:hover { color: var(--c-orange); }
+    .breadcrumb .sep { margin: 0 0.5rem; opacity: 0.5; }
+    .breadcrumb [aria-current] { color: var(--c-text); font-weight: 500; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; gap: var(--s-5); }
+      .contact-info { order: -1; }
+    }
+    @media (max-width: 768px) {
+      .contact-form-wrap { padding: var(--s-5) var(--s-4); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Menu principal">
+
+        <a href="index.html" class="nav__logo" aria-label="Funtastic - Retour à l'accueil">
+          <img src="https://static.wixstatic.com/media/7a7d34_2eb31037272b45098d6e3ed0101bd4d2~mv2.jpg/v1/fill/w_400,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20FUNTASTIC%202026.jpg" alt="Logo Funtastic">
+        </a>
+
+        <ul class="nav__menu" role="menubar">
+          <li class="nav__item" role="none">
+            <a href="index.html" class="nav__link" role="menuitem">Accueil</a>
+          </li>
+          <li class="nav__item nav__item--has-submenu" role="none">
+            <a href="prestations.html" class="nav__link" role="menuitem" aria-haspopup="true">
+              Prestations
+              <svg class="nav__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+            <ul class="nav__submenu" role="menu">
+              <li role="none"><a href="prestations.html" role="menuitem">Toutes les prestations</a></li>
+              <li role="none"><a href="evj.html" role="menuitem">EVJ / EVJF / EVG</a></li>
+              <li role="none"><a href="team-building.html" role="menuitem">Team Building</a></li>
+              <li role="none"><a href="anniversaires-enfants.html" role="menuitem">Anniversaires enfants</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--has-submenu" role="none">
+            <a href="locations.html" class="nav__link" role="menuitem" aria-haspopup="true">
+              Location matériel
+              <svg class="nav__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+            <ul class="nav__submenu" role="menu">
+              <li role="none"><a href="locations.html" role="menuitem">Toutes les locations</a></li>
+              <li role="none"><a href="jeux-gonflables.html" role="menuitem">Jeux gonflables</a></li>
+              <li role="none"><a href="boutchoux.html" role="menuitem">Bout'Choux</a></li>
+              <li role="none"><a href="jeux-en-bois.html" role="menuitem">Jeux en bois</a></li>
+              <li role="none"><a href="realite-virtuelle.html" role="menuitem">Réalité virtuelle</a></li>
+              <li role="none"><a href="trampoline-elastique.html" role="menuitem">Trampoline élastique</a></li>
+              <li role="none"><a href="petit-train.html" role="menuitem">Petit train</a></li>
+              <li role="none"><a href="photobooth.html" role="menuitem">Photobooth</a></li>
+              <li role="none"><a href="mur-escalade.html" role="menuitem">Mur d'escalade</a></li>
+              <li role="none"><a href="jeux-sportifs.html" role="menuitem">Jeux sportifs</a></li>
+              <li role="none"><a href="golf-petanque-bowling.html" role="menuitem">Golf / Pétanque / Bowling</a></li>
+              <li role="none"><a href="machines-alimentaires.html" role="menuitem">Machines alimentaires</a></li>
+            </ul>
+          </li>
+          <li class="nav__item" role="none">
+            <a href="a-propos.html" class="nav__link" role="menuitem">À propos</a>
+          </li>
+          <li class="nav__item" role="none">
+            <a href="contact.html" class="nav__link is-active" role="menuitem" aria-current="page">Contact</a>
+          </li>
+        </ul>
+
+        <div class="nav__cta">
+          <a href="tel:+33618379319" class="nav__phone" aria-label="Appeler Funtastic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            06 18 37 93 19
+          </a>
+          <a href="contact.html" class="btn btn--primary btn--sm">Demander un devis</a>
+          <button class="nav__burger" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       HERO PAGE CONTACT
+       ============================================================ -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Parlons de votre événement</h1>
+      <p>Décrivez-nous votre projet — nous vous proposons un devis personnalisé sous 24 à 48 heures, adapté à votre date, votre lieu et votre budget.</p>
+    </div>
+  </section>
+
+  <!-- Fil d'Ariane -->
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Contact</span>
+    </nav>
+  </div>
+
+
+  <!-- ============================================================
+       SECTION CONTACT (formulaire + infos)
+       ============================================================ -->
+  <section class="section" style="padding-top: var(--s-5);">
+    <div class="container">
+
+      <div class="contact-layout">
+
+        <!-- ============ COLONNE FORMULAIRE ============ -->
+        <div class="contact-form-wrap reveal">
+          <span class="eyebrow">Devis gratuit · sans engagement</span>
+          <h2>Décrivez-nous votre projet</h2>
+          <p class="lead">Plus vous nous donnez de détails, plus nous pouvons vous proposer une animation adaptée. Tous les champs marqués <span style="color:var(--c-orange);">*</span> sont obligatoires.</p>
+
+          <!-- ============================================================
+               FORMULAIRE NETLIFY
+               ============================================================
+               Configuration Netlify Forms :
+               - name="contact"          → identifiant du formulaire dans Netlify
+               - method="POST"           → envoi standard
+               - data-netlify="true"     → active la détection auto Netlify
+               - data-netlify-honeypot   → champ piège anti-spam
+               - action="/merci.html"    → redirection après envoi
+               - input hidden form-name  → obligatoire pour Netlify
+               ============================================================ -->
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            action="/merci.html"
+            class="form"
+            novalidate>
+
+            <!-- Champ caché obligatoire pour Netlify -->
+            <input type="hidden" name="form-name" value="contact">
+
+            <!-- Honeypot anti-spam (caché aux humains) -->
+            <p class="honeypot">
+              <label>Ne remplissez pas ce champ : <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+            </p>
+
+            <!-- Ligne 1 : Nom + Email -->
+            <div class="form-row">
+              <div class="form-field">
+                <label for="nom">Nom et prénom <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="nom"
+                  name="nom"
+                  required
+                  autocomplete="name"
+                  placeholder="Marie Dupont">
+              </div>
+              <div class="form-field">
+                <label for="email">Adresse email <span class="required">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="vous@exemple.fr">
+              </div>
+            </div>
+
+            <!-- Ligne 2 : Téléphone + Type d'événement -->
+            <div class="form-row">
+              <div class="form-field">
+                <label for="telephone">Téléphone <span class="required">*</span></label>
+                <input
+                  type="tel"
+                  id="telephone"
+                  name="telephone"
+                  required
+                  autocomplete="tel"
+                  pattern="[0-9 +().-]{8,}"
+                  placeholder="06 12 34 56 78">
+              </div>
+              <div class="form-field">
+                <label for="type-evenement">Type d'événement <span class="required">*</span></label>
+                <select id="type-evenement" name="type-evenement" required>
+                  <option value="">— Choisissez —</option>
+                  <option value="EVJ / EVJF / EVG">EVJ / EVJF / EVG</option>
+                  <option value="Team Building">Team Building / Cohésion d'équipe</option>
+                  <option value="Anniversaire enfant">Anniversaire enfant</option>
+                  <option value="Anniversaire adulte">Anniversaire adulte</option>
+                  <option value="Mariage">Mariage</option>
+                  <option value="Événement entreprise">Événement entreprise</option>
+                  <option value="Événement collectivité">Événement collectivité / mairie</option>
+                  <option value="Festival / fête de village">Festival / fête de village</option>
+                  <option value="Location matériel">Location de matériel uniquement</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Ligne 3 : Date + Nombre de participants -->
+            <div class="form-row">
+              <div class="form-field">
+                <label for="date-evenement">Date prévue</label>
+                <input
+                  type="date"
+                  id="date-evenement"
+                  name="date-evenement">
+              </div>
+              <div class="form-field">
+                <label for="participants">Nombre de participants</label>
+                <select id="participants" name="participants">
+                  <option value="">— Estimation —</option>
+                  <option value="Moins de 10">Moins de 10</option>
+                  <option value="10 à 30">10 à 30</option>
+                  <option value="30 à 60">30 à 60</option>
+                  <option value="60 à 100">60 à 100</option>
+                  <option value="100 à 200">100 à 200</option>
+                  <option value="Plus de 200">Plus de 200</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Ligne 4 : Lieu -->
+            <div class="form-field">
+              <label for="lieu">Lieu de l'événement</label>
+              <input
+                type="text"
+                id="lieu"
+                name="lieu"
+                placeholder="Ville, code postal, ou nom du lieu">
+            </div>
+
+            <!-- Ligne 5 : Message -->
+            <div class="form-field">
+              <label for="message">Décrivez votre projet <span class="required">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                placeholder="Quelles animations vous intéressent ? Avez-vous des contraintes particulières (intérieur/extérieur, électricité, accès…) ? Plus de détails = devis plus précis !"></textarea>
+            </div>
+
+            <!-- Consentement RGPD -->
+            <div class="form-checkbox">
+              <input type="checkbox" id="rgpd" name="rgpd" required>
+              <label for="rgpd">
+                J'accepte que mes données soient utilisées pour me recontacter au sujet de ma demande de devis.
+                Conformément à la loi RGPD, je peux à tout moment demander la suppression de mes données par mail à <a href="mailto:funtastic33@yahoo.com">funtastic33@yahoo.com</a>. <span class="required">*</span>
+              </label>
+            </div>
+
+            <!-- Bouton submit -->
+            <button type="submit" class="btn btn--primary btn--lg" style="width:100%; margin-top:var(--s-3);">
+              Envoyer ma demande de devis
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </button>
+
+            <p style="font-size:0.85rem; color:var(--c-text-muted); text-align:center; margin-top:var(--s-3);">
+              🔒 Vos informations sont confidentielles et ne seront jamais partagées.
+            </p>
+
+          </form>
+        </div>
+
+        <!-- ============ COLONNE INFOS ============ -->
+        <aside class="contact-info">
+
+          <!-- Carte coordonnées principales -->
+          <div class="info-card info-card--gradient reveal">
+            <h3>
+              <span class="icon" aria-hidden="true">📞</span>
+              Nous joindre directement
+            </h3>
+
+            <div class="info-row">
+              <svg class="info-row__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div>
+                <strong>Téléphone</strong>
+                <a href="tel:+33618379319">06 18 37 93 19</a><br>
+                <span class="muted">Lun-Sam · 9h-19h</span>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <svg class="info-row__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:funtastic33@yahoo.com">funtastic33@yahoo.com</a><br>
+                <span class="muted">Réponse sous 24-48h</span>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <svg class="info-row__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <strong>Zone d'intervention</strong>
+                <span class="muted">Bassin d'Arcachon · Bordeaux<br>Gironde · Landes · Nouvelle-Aquitaine</span>
+              </div>
+            </div>
+
+            <!-- Actions rapides -->
+            <div class="quick-actions">
+              <a href="https://wa.me/33618379319?text=Bonjour%20Funtastic%2C%20je%20souhaite%20demander%20un%20devis%20pour..."
+                 target="_blank"
+                 rel="noopener"
+                 class="btn"
+                 style="background:#25D366; color:#fff; border-color:#25D366;">
+                💬 Discuter sur WhatsApp
+              </a>
+              <a href="tel:+33618379319" class="btn btn--ghost" style="background:rgba(255,255,255,0.18); color:#fff; border-color:rgba(255,255,255,0.4);">
+                📞 Appeler maintenant
+              </a>
+            </div>
+          </div>
+
+          <!-- Carte réassurance -->
+          <div class="info-card reveal" style="transition-delay:0.1s">
+            <h3>
+              <span class="icon" aria-hidden="true">✨</span>
+              Pourquoi nous choisir ?
+            </h3>
+            <ul class="reassur-list">
+              <li>Devis gratuit et sans engagement en 24-48h</li>
+              <li>Installation et désinstallation incluses</li>
+              <li>Animateurs professionnels expérimentés</li>
+              <li>Plus de 4 ans d'expérience depuis 2021</li>
+              <li>Assurance Responsabilité Civile pro</li>
+              <li>Plus de 500 événements animés</li>
+            </ul>
+          </div>
+
+          <!-- Carte réseaux sociaux -->
+          <div class="info-card reveal" style="transition-delay:0.2s">
+            <h3>
+              <span class="icon" aria-hidden="true">📱</span>
+              Suivez-nous
+            </h3>
+            <p style="font-size:0.92rem; color:var(--c-text-soft); margin-bottom:var(--s-4);">
+              Découvrez nos animations en images et nos derniers événements sur les réseaux.
+            </p>
+            <div style="display:flex; gap:var(--s-3);">
+              <a href="https://www.instagram.com/funtastic.33/" target="_blank" rel="noopener" class="btn btn--outline btn--sm" style="flex:1;">
+                Instagram
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100063555446775" target="_blank" rel="noopener" class="btn btn--outline btn--sm" style="flex:1;">
+                Facebook
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION FAQ rapide (rassurance + SEO)
+       ============================================================ -->
+  <section class="section section--soft">
+    <div class="container" style="max-width: 880px;">
+
+      <div class="section-header reveal">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Vos questions, nos réponses</h2>
+      </div>
+
+      <div class="grid" style="gap:var(--s-3);">
+
+        <details class="info-card reveal" style="cursor:pointer;">
+          <summary style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+            Combien de temps à l'avance dois-je réserver ?
+            <span style="color:var(--c-orange); font-size:1.5rem;">+</span>
+          </summary>
+          <p style="margin-top:var(--s-3); color:var(--c-text-soft);">
+            Pour les événements en haute saison (mai à septembre), nous recommandons de réserver au moins 1 à 2 mois à l'avance. Hors saison, un délai de 2 à 3 semaines est généralement suffisant. Pour les demandes de dernière minute, contactez-nous directement par téléphone.
+          </p>
+        </details>
+
+        <details class="info-card reveal" style="cursor:pointer; transition-delay:0.05s;">
+          <summary style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+            L'installation et le démontage sont-ils inclus ?
+            <span style="color:var(--c-orange); font-size:1.5rem;">+</span>
+          </summary>
+          <p style="margin-top:var(--s-3); color:var(--c-text-soft);">
+            Oui ! Tous nos tarifs incluent la livraison, l'installation et la désinstallation du matériel sur votre lieu d'événement. Vous n'avez à vous occuper de rien.
+          </p>
+        </details>
+
+        <details class="info-card reveal" style="cursor:pointer; transition-delay:0.1s;">
+          <summary style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+            Intervenez-vous en intérieur comme en extérieur ?
+            <span style="color:var(--c-orange); font-size:1.5rem;">+</span>
+          </summary>
+          <p style="margin-top:var(--s-3); color:var(--c-text-soft);">
+            Oui, la majorité de nos animations sont adaptables aux deux configurations. Certaines structures gonflables nécessitent un espace minimum et un sol plat. Lors du devis, nous vérifions ensemble la faisabilité technique avec votre lieu.
+          </p>
+        </details>
+
+        <details class="info-card reveal" style="cursor:pointer; transition-delay:0.15s;">
+          <summary style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+            Quelles sont vos zones d'intervention ?
+            <span style="color:var(--c-orange); font-size:1.5rem;">+</span>
+          </summary>
+          <p style="margin-top:var(--s-3); color:var(--c-text-soft);">
+            Nous intervenons principalement sur le Bassin d'Arcachon (Arcachon, La Teste, Gujan-Mestras, Le Teich…), Bordeaux Métropole, toute la Gironde et les Landes. Pour des événements plus éloignés en Nouvelle-Aquitaine, nous nous déplaçons sur devis.
+          </p>
+        </details>
+
+        <details class="info-card reveal" style="cursor:pointer; transition-delay:0.2s;">
+          <summary style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+            Le devis est-il gratuit et sans engagement ?
+            <span style="color:var(--c-orange); font-size:1.5rem;">+</span>
+          </summary>
+          <p style="margin-top:var(--s-3); color:var(--c-text-soft);">
+            Absolument. Tous nos devis sont gratuits, détaillés et sans engagement. Vous recevez votre devis sous 24 à 48 heures par email. C'est à vous de décider ensuite.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <img src="https://static.wixstatic.com/media/7a7d34_2eb31037272b45098d6e3ed0101bd4d2~mv2.jpg/v1/fill/w_400,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20FUNTASTIC%202026.jpg" alt="Logo Funtastic">
+          <p>Animations événementielles clé en main sur le Bassin d'Arcachon, Bordeaux, Gironde et Landes. Team building, EVJ, anniversaires, location de jeux.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/funtastic.33/" target="_blank" rel="noopener" aria-label="Instagram Funtastic">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100063555446775" target="_blank" rel="noopener" aria-label="Facebook Funtastic">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Prestations</h4>
+          <ul>
+            <li><a href="prestations.html">Toutes les prestations</a></li>
+            <li><a href="evj.html">EVJ / EVJF / EVG</a></li>
+            <li><a href="team-building.html">Team Building</a></li>
+            <li><a href="anniversaires-enfants.html">Anniversaires enfants</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Location matériel</h4>
+          <ul>
+            <li><a href="jeux-gonflables.html">Jeux gonflables</a></li>
+            <li><a href="realite-virtuelle.html">Réalité virtuelle</a></li>
+            <li><a href="photobooth.html">Photobooth</a></li>
+            <li><a href="petit-train.html">Petit train</a></li>
+            <li><a href="locations.html">Voir tout →</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+33618379319">06 18 37 93 19</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:funtastic33@yahoo.com">funtastic33@yahoo.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Gujan-Mestras (33)<br>Bassin d'Arcachon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Funtastic — Tous droits réservés</span>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       BOUTON WHATSAPP FLOTTANT
+       ============================================================ -->
+  <a href="https://wa.me/33618379319?text=Bonjour%20Funtastic%2C%20je%20souhaite%20demander%20un%20devis%20pour..."
+     class="wa-float"
+     target="_blank"
+     rel="noopener"
+     aria-label="Contacter Funtastic sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-float__tooltip">Discuter sur WhatsApp</span>
+  </a>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>

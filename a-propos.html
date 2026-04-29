@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B3D91">
+
+  <title>À propos | Funtastic - Agence d'animations événementielles Bassin d'Arcachon</title>
+  <meta name="description" content="Découvrez Funtastic : depuis 2021, Domi et Nico animent vos événements sur le Bassin d'Arcachon, Bordeaux et Gironde avec passion. Plus de 500 événements à notre actif.">
+  <meta name="keywords" content="agence événementielle Bassin d'Arcachon, Funtastic Gujan-Mestras, animateurs événementiels Gironde">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.funtastic33.fr/a-propos.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="À propos - Funtastic">
+  <meta property="og:description" content="Une équipe passionnée qui anime vos événements depuis 2021 sur le Bassin d'Arcachon.">
+  <meta property="og:url" content="https://www.funtastic33.fr/a-propos.html">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "À propos de Funtastic",
+    "url": "https://www.funtastic33.fr/a-propos.html",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Funtastic",
+      "foundingDate": "2021",
+      "telephone": "+33618379319",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gujan-Mestras",
+        "addressRegion": "Gironde",
+        "addressCountry": "FR"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-light) 100%);
+      color: var(--c-white);
+      padding: var(--s-8) 0 var(--s-7);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+    .page-hero > .container { position: relative; z-index: 1; }
+    .page-hero h1 { color: var(--c-white); font-size: clamp(2rem, 4.5vw, 3.5rem); margin-bottom: var(--s-4); }
+    .page-hero p { font-size: 1.15rem; max-width: 720px; margin: 0 auto; opacity: 0.95; }
+
+    .breadcrumb { padding: var(--s-4) 0; font-size: 0.88rem; color: var(--c-text-muted); }
+    .breadcrumb a { color: var(--c-text-muted); }
+    .breadcrumb a:hover { color: var(--c-orange); }
+    .breadcrumb .sep { margin: 0 0.5rem; opacity: 0.5; }
+    .breadcrumb [aria-current] { color: var(--c-text); font-weight: 500; }
+
+    /* Section histoire en split */
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-7);
+      align-items: center;
+    }
+    .story__media {
+      aspect-ratio: 1/1;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .story__media img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .story__content h2 { margin-bottom: var(--s-4); }
+    .story__content p {
+      font-size: 1.05rem;
+      color: var(--c-text-soft);
+      line-height: 1.7;
+      margin-bottom: var(--s-4);
+    }
+
+    /* Statistiques */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s-5);
+      margin: var(--s-7) 0;
+    }
+    .stat {
+      text-align: center;
+      padding: var(--s-5) var(--s-3);
+      background: var(--c-white);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-sm);
+      border-top: 4px solid var(--c-yellow);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--c-blue);
+      line-height: 1;
+      margin-bottom: var(--s-2);
+    }
+    .stat span {
+      font-size: 0.9rem;
+      color: var(--c-text-muted);
+    }
+
+    /* Valeurs */
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--s-5);
+      margin-top: var(--s-7);
+    }
+    .value-card {
+      background: var(--c-white);
+      padding: var(--s-6) var(--s-5);
+      border-radius: var(--r-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--t-slow);
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .value-card__icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--c-blue), var(--c-blue-light));
+      color: var(--c-white);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: var(--s-4);
+    }
+    .value-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: var(--s-2);
+    }
+    .value-card p {
+      font-size: 0.95rem;
+      color: var(--c-text-soft);
+      line-height: 1.6;
+    }
+
+    /* Équipe */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+      gap: var(--s-6);
+      justify-content: center;
+      margin-top: var(--s-6);
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-member__photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: var(--s-4);
+      position: relative;
+    }
+    .team-member__photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 61, 145, 0.15) 0%, transparent 50%);
+    }
+    .team-member__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform var(--t-slow);
+    }
+    .team-member:hover .team-member__photo img { transform: scale(1.05); }
+    .team-member h3 {
+      font-size: 1.4rem;
+      color: var(--c-blue);
+      margin-bottom: var(--s-1);
+    }
+    .team-member span {
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      background: var(--c-yellow);
+      color: var(--c-text);
+      border-radius: var(--r-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 768px) {
+      .story { grid-template-columns: 1fr; gap: var(--s-5); }
+      .stats { grid-template-columns: repeat(2, 1fr); gap: var(--s-3); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Menu principal">
+        <a href="index.html" class="nav__logo" aria-label="Funtastic - Retour à l'accueil">
+          <img src="https://static.wixstatic.com/media/7a7d34_2eb31037272b45098d6e3ed0101bd4d2~mv2.jpg/v1/fill/w_400,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20FUNTASTIC%202026.jpg" alt="Logo Funtastic">
+        </a>
+        <ul class="nav__menu" role="menubar">
+          <li class="nav__item" role="none"><a href="index.html" class="nav__link" role="menuitem">Accueil</a></li>
+          <li class="nav__item nav__item--has-submenu" role="none">
+            <a href="prestations.html" class="nav__link" role="menuitem" aria-haspopup="true">
+              Prestations
+              <svg class="nav__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+            <ul class="nav__submenu" role="menu">
+              <li role="none"><a href="prestations.html" role="menuitem">Toutes les prestations</a></li>
+              <li role="none"><a href="evj.html" role="menuitem">EVJ / EVJF / EVG</a></li>
+              <li role="none"><a href="team-building.html" role="menuitem">Team Building</a></li>
+              <li role="none"><a href="anniversaires-enfants.html" role="menuitem">Anniversaires enfants</a></li>
+            </ul>
+          </li>
+          <li class="nav__item nav__item--has-submenu" role="none">
+            <a href="locations.html" class="nav__link" role="menuitem" aria-haspopup="true">
+              Location matériel
+              <svg class="nav__chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+            <ul class="nav__submenu" role="menu">
+              <li role="none"><a href="locations.html" role="menuitem">Toutes les locations</a></li>
+              <li role="none"><a href="jeux-gonflables.html" role="menuitem">Jeux gonflables</a></li>
+              <li role="none"><a href="boutchoux.html" role="menuitem">Bout'Choux</a></li>
+              <li role="none"><a href="jeux-en-bois.html" role="menuitem">Jeux en bois</a></li>
+              <li role="none"><a href="realite-virtuelle.html" role="menuitem">Réalité virtuelle</a></li>
+              <li role="none"><a href="trampoline-elastique.html" role="menuitem">Trampoline élastique</a></li>
+              <li role="none"><a href="petit-train.html" role="menuitem">Petit train</a></li>
+              <li role="none"><a href="photobooth.html" role="menuitem">Photobooth</a></li>
+              <li role="none"><a href="mur-escalade.html" role="menuitem">Mur d'escalade</a></li>
+              <li role="none"><a href="jeux-sportifs.html" role="menuitem">Jeux sportifs</a></li>
+              <li role="none"><a href="golf-petanque-bowling.html" role="menuitem">Golf / Pétanque / Bowling</a></li>
+              <li role="none"><a href="machines-alimentaires.html" role="menuitem">Machines alimentaires</a></li>
+            </ul>
+          </li>
+          <li class="nav__item" role="none"><a href="a-propos.html" class="nav__link is-active" role="menuitem" aria-current="page">À propos</a></li>
+          <li class="nav__item" role="none"><a href="contact.html" class="nav__link" role="menuitem">Contact</a></li>
+        </ul>
+        <div class="nav__cta">
+          <a href="tel:+33618379319" class="nav__phone">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            06 18 37 93 19
+          </a>
+          <a href="contact.html" class="btn btn--primary btn--sm">Demander un devis</a>
+          <button class="nav__burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--c-yellow);">Notre histoire</span>
+      <h1>Une passion pour l'événementiel</h1>
+      <p>Funtastic est né en 2021 sur le Bassin d'Arcachon avec une vocation : transformer les moments importants de votre vie en souvenirs inoubliables.</p>
+    </div>
+  </section>
+
+  <!-- Fil d'Ariane -->
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span class="sep">/</span>
+      <span aria-current="page">À propos</span>
+    </nav>
+  </div>
+
+
+  <!-- HISTOIRE -->
+  <section class="section" style="padding-top: var(--s-5);">
+    <div class="container">
+      <div class="story reveal">
+        <div class="story__media">
+          <img src="https://static.wixstatic.com/media/7a7d34_a1fe0340b4f54c28a9321f82facb7cda~mv2.jpg/v1/fill/w_800,h_800,al_c,q_85,enc_avif,quality_auto/Resized_20200912_2233301_edited_edited.jpg" alt="Domi et Nico - équipe Funtastic Bassin d'Arcachon">
+        </div>
+        <div class="story__content">
+          <span class="eyebrow">Depuis 2021</span>
+          <h2>Funtastic, l'animation événementielle au cœur du Bassin</h2>
+          <p>Funtastic est né en 2021 sur le Bassin d'Arcachon, avec la vocation d'aider nos clients à transformer les moments importants de leur vie en moments inoubliables.</p>
+          <p>Depuis nos débuts, nous nous sommes engagés à créer des expériences percutantes et créatives pour nos clients et leurs invités, quelle que soit la taille de l'événement — d'un anniversaire d'enfant à un grand séminaire d'entreprise.</p>
+          <p>Notre équipe s'efforce de répondre et de dépasser les besoins de toutes les personnes concernées. Nous comprenons l'importance de travailler <strong>avec</strong> (et pas seulement <strong>pour</strong>) nos clients, afin de rendre leurs événements vraiment uniques.</p>
+
+          <div class="btn-group" style="margin-top:var(--s-5);">
+            <a href="contact.html" class="btn btn--primary">Échanger avec nous</a>
+            <a href="prestations.html" class="btn btn--outline">Découvrir nos animations</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATS -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Funtastic en chiffres</span>
+        <h2>4 années à animer la région</h2>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <strong>2021</strong>
+          <span>Année de création</span>
+        </div>
+        <div class="stat">
+          <strong>500+</strong>
+          <span>Événements animés</span>
+        </div>
+        <div class="stat">
+          <strong>11</strong>
+          <span>Catégories d'animations</span>
+        </div>
+        <div class="stat">
+          <strong>4★</strong>
+          <span>Zones d'intervention</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VALEURS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Ce qui nous fait avancer</span>
+        <h2>Nos valeurs</h2>
+        <p>Trois principes qui guident chacune de nos interventions, du devis au démontage.</p>
+      </div>
+
+      <div class="values">
+        <div class="value-card reveal">
+          <div class="value-card__icon" aria-hidden="true">🎯</div>
+          <h3>Sur-mesure</h3>
+          <p>Chaque événement est unique. Nous écoutons, nous adaptons, nous proposons. Pas de formule pré-emballée — du vrai sur-mesure pensé pour vous.</p>
+        </div>
+
+        <div class="value-card reveal" style="transition-delay:0.1s">
+          <div class="value-card__icon" aria-hidden="true">🤝</div>
+          <h3>Proximité</h3>
+          <p>Nous sommes installés sur le Bassin d'Arcachon. Nous connaissons la région, ses lieux, ses contraintes. Vous avez un interlocuteur disponible et réactif.</p>
+        </div>
+
+        <div class="value-card reveal" style="transition-delay:0.2s">
+          <div class="value-card__icon" aria-hidden="true">⭐</div>
+          <h3>Exigence</h3>
+          <p>Matériel régulièrement contrôlé, animateurs formés, organisation millimétrée. Le sérieux derrière le fun — pour que vous puissiez vraiment lâcher prise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ÉQUIPE -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">L'équipe</span>
+        <h2>Vos animateurs</h2>
+        <p>Une équipe à taille humaine, qui s'investit personnellement dans chaque événement.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-member reveal">
+          <div class="team-member__photo">
+            <img src="https://static.wixstatic.com/media/7a7d34_a1fe0340b4f54c28a9321f82facb7cda~mv2.jpg/v1/fill/w_800,h_800,al_c,q_85,enc_avif,quality_auto/Resized_20200912_2233301_edited_edited.jpg" alt="Domi et Nico - animateurs Funtastic Bassin d'Arcachon">
+          </div>
+          <h3>Domi & Nico</h3>
+          <span>Animateurs · Co-fondateurs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BANDEAU RÉASSURANCE -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-bar__grid">
+        <div class="trust-item">
+          <div class="trust-item__icon" aria-hidden="true">⚡</div>
+          <div><strong>Devis sous 24-48h</strong><span>Réponse rapide garantie</span></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item__icon" aria-hidden="true">🚚</div>
+          <div><strong>Installation incluse</strong><span>Montage et démontage</span></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item__icon" aria-hidden="true">🎓</div>
+          <div><strong>Animateurs pro</strong><span>Encadrement expérimenté</span></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item__icon" aria-hidden="true">🛡️</div>
+          <div><strong>Assurance RC pro</strong><span>Sérénité totale</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-block reveal">
+        <span class="eyebrow" style="color:var(--c-white);">Envie de nous rencontrer ?</span>
+        <h2>Parlons de votre projet</h2>
+        <p>Nous serions ravis d'échanger avec vous sur votre événement à venir. Devis gratuit en 24 à 48 heures, sans engagement.</p>
+        <div class="btn-group" style="justify-content:center;">
+          <a href="contact.html" class="btn btn--ghost btn--lg" style="background:var(--c-white); color:var(--c-orange);">
+            Demander mon devis
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="tel:+33618379319" class="btn btn--ghost btn--lg" style="background:transparent; border-color:rgba(255,255,255,0.6); color:var(--c-white);">
+            📞 06 18 37 93 19
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <img src="https://static.wixstatic.com/media/7a7d34_2eb31037272b45098d6e3ed0101bd4d2~mv2.jpg/v1/fill/w_400,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%20FUNTASTIC%202026.jpg" alt="Logo Funtastic">
+          <p>Animations événementielles clé en main sur le Bassin d'Arcachon, Bordeaux, Gironde et Landes. Team building, EVJ, anniversaires, location de jeux.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/funtastic.33/" target="_blank" rel="noopener" aria-label="Instagram Funtastic">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100063555446775" target="_blank" rel="noopener" aria-label="Facebook Funtastic">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Prestations</h4>
+          <ul>
+            <li><a href="prestations.html">Toutes les prestations</a></li>
+            <li><a href="evj.html">EVJ / EVJF / EVG</a></li>
+            <li><a href="team-building.html">Team Building</a></li>
+            <li><a href="anniversaires-enfants.html">Anniversaires enfants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Location matériel</h4>
+          <ul>
+            <li><a href="jeux-gonflables.html">Jeux gonflables</a></li>
+            <li><a href="realite-virtuelle.html">Réalité virtuelle</a></li>
+            <li><a href="photobooth.html">Photobooth</a></li>
+            <li><a href="petit-train.html">Petit train</a></li>
+            <li><a href="locations.html">Voir tout →</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+33618379319">06 18 37 93 19</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:funtastic33@yahoo.com">funtastic33@yahoo.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Gujan-Mestras (33)<br>Bassin d'Arcachon</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Funtastic — Tous droits réservés</span>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/33618379319?text=Bonjour%20Funtastic%2C%20je%20souhaite%20demander%20un%20devis%20pour..."
+     class="wa-float" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-float__tooltip">Discuter sur WhatsApp</span>
+  </a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
