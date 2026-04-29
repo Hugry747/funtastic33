@@ -716,8 +716,10 @@ p:last-child { margin-bottom: 0; }
 /* Visuel hero (à droite) */
 .hero__visual {
   position: relative;
+  width: 100%;
   aspect-ratio: 4/5;
   max-width: 480px;
+  min-height: 360px;
   justify-self: end;
 }
 .hero__visual img {
